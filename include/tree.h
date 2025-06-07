@@ -5,18 +5,17 @@
 #include <memory>
 
 class PMTree {
-public:
+ public:
     struct Node {
         char value;
         std::vector<std::shared_ptr<Node>> children;
-        Node(char val) : value(val) {}
+        explicit Node(char val) : value(val) {}
     };
-    PMTree(const std::vector<char>& elements);
+    explicit PMTree(const std::vector<char>& elements);
     ~PMTree() = default;
     std::shared_ptr<Node> getRoot() const { return root; }
     size_t getPermutationsCount() const { return total_permutations; }
-
-private:
+ private:
     std::shared_ptr<Node> root;
     size_t total_permutations;
     void buildTree(std::shared_ptr<Node> parent, const std::vector<char>& remaining);
