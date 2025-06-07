@@ -18,7 +18,7 @@ PMTree::PMTree(const std::vector<char>& elements) {
     root = std::make_shared<Node>('\0'); // Dummy root
     buildTree(root, elements);
 }
-void PMTree::buildTree(std::shared_ptr<Node> parent, 
+void PMTree::buildTree(std::shared_ptr<Node> parent,
 const std::vector<char>& remaining) {
     if (remaining.empty()) {
         return;
