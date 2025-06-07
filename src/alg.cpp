@@ -1,7 +1,9 @@
 // Copyright 2022 NNTU-CS
-#include "tree.h"
 #include <algorithm>
 #include <stdexcept>
+#include <memory>
+#include <vector>
+#include "tree.h"
 
 PMTree::PMTree(const std::vector<char>& elements) {
     if (elements.empty()) {
@@ -16,7 +18,8 @@ PMTree::PMTree(const std::vector<char>& elements) {
     root = std::make_shared<Node>('\0'); // Dummy root
     buildTree(root, elements);
 }
-void PMTree::buildTree(std::shared_ptr<Node> parent, const std::vector<char>& remaining) {
+void PMTree::buildTree(std::shared_ptr<Node> parent, 
+const std::vector<char>& remaining) {
     if (remaining.empty()) {
         return;
     }
@@ -32,8 +35,8 @@ void PMTree::buildTree(std::shared_ptr<Node> parent, const std::vector<char>& re
         buildTree(child, new_remaining);
     }
 }
-void collectPermutations(const std::shared_ptr<PMTree::Node>& node, 
-                        std::vector<char>& current, 
+void collectPermutations(const std::shared_ptr<PMTree::Node>& node,
+                        std::vector<char>& current,
                         std::vector<std::vector<char>>& result) {
     if (node->value != '\0') {
         current.push_back(node->value);
@@ -65,7 +68,8 @@ std::vector<char> getPerm1(const PMTree& tree, int num) {
     auto all_perms = getAllPerms(tree);
     return all_perms[num - 1];
 }
-std::vector<char> getPerm2Helper(const std::shared_ptr<PMTree::Node>& node, int& remaining) {
+std::vector<char> getPerm2Helper(
+const std::shared_ptr<PMTree::Node>& node, int& remaining) {
     if (node->children.empty()) {
         if (--remaining == 0) {
             return {node->value};
