@@ -1,6 +1,7 @@
 // Copyright 2022 NNTU-CS
-#include "tree.h"
 #include <iostream>
+#include <vector>
+#include "tree.h"
 
 void printVector(const std::vector<char>& vec) {
     for (char c : vec) {
@@ -26,7 +27,7 @@ int main() {
     }
     std::vector<char> empty;
     PMTree empty_tree(empty);
-    std::cout << "\nEmpty tree permutations count: " 
+    std::cout << "\nEmpty tree permutations count: "
               << empty_tree.getPermutationsCount() << std::endl;
     std::vector<char> single = {'A'};
     PMTree single_tree(single);
