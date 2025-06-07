@@ -11,10 +11,8 @@ public:
         std::vector<std::shared_ptr<Node>> children;
         Node(char val) : value(val) {}
     };
-
     PMTree(const std::vector<char>& elements);
     ~PMTree() = default;
-
     std::shared_ptr<Node> getRoot() const { return root; }
     size_t getPermutationsCount() const { return total_permutations; }
 
@@ -23,7 +21,6 @@ private:
     size_t total_permutations;
     void buildTree(std::shared_ptr<Node> parent, const std::vector<char>& remaining);
 };
-
 std::vector<std::vector<char>> getAllPerms(const PMTree& tree);
 std::vector<char> getPerm1(const PMTree& tree, int num);
 std::vector<char> getPerm2(const PMTree& tree, int num);
